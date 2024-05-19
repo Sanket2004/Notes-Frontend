@@ -9,18 +9,18 @@ const CreateNote = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [errors, setErrors] = useState({ title: false, content: false });
-    const [notes, setNotes] = useState([]);
+    // const [notes, setNotes] = useState([]);
     const navigate = useNavigate();
 
-    const fetchNotes = async () => {
-        try {
-            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/notes`);
-            setNotes(response.data);
-        } catch (error) {
-            toast.error('Error fetching notes !');
-            console.error('Error fetching notes:', error);
-        }
-    };
+    // const fetchNotes = async () => {
+    //     try {
+    //         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/notes`);
+    //         // setNotes(response.data);
+    //     } catch (error) {
+    //         toast.error('Error fetching notes !');
+    //         console.error('Error fetching notes:', error);
+    //     }
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +35,7 @@ const CreateNote = () => {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/notes`, { title, content });
             console.log('New note created:', response.data);
             // Fetch notes again after successfully creating a note
-            fetchNotes();
+            // fetchNotes();
             setTitle('');
             setContent('');
             // Navigate to /notes after successful submission

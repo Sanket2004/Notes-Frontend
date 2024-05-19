@@ -1,24 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from './Navbar';
-import { GrFormEdit } from "react-icons/gr";
-import { GrFormTrash } from "react-icons/gr";
+import { GrFormEdit, GrFormTrash } from "react-icons/gr";
 import { toast, Toaster } from "react-hot-toast";
-
 
 function NoteDetailsPage() {
     // Extract the note ID from the route parameters
     const { id } = useParams();
-
     const navigate = useNavigate();
 
     // State to store the note details
     const [noteDetails, setNoteDetails] = useState(null);
 
-    // Fetch the details of the note with the given ID
-
-    const fetchNoteDetails = async () => {
+    // Define fetchNoteDetails function with useCallback
+    const fetchNoteDetails = useCallback(async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/notes/${id}`);
             setNoteDetails(response.data);
@@ -26,16 +22,15 @@ function NoteDetailsPage() {
             toast.error('Error fetching note details !');
             console.error('Error fetching note details:', error);
         }
-    };
+    }, [id]);
 
     useEffect(() => {
         fetchNoteDetails();
-    }, [id]);
+    }, [fetchNoteDetails]);
 
     const handleUpdate = async () => {
         await navigate(`/notes/update/${id}`)
     }
-
 
     const handleDeleteNote = async () => {
         try {

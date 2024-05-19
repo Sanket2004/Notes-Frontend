@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import CreateNote from './components/CreateNote';
 import ReadNotes from './components/ReadNotes';
 import UpdateNote from './components/UpdateNote';
 import Navbar from './components/Navbar';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 
 function HomePage() {
     const [notes, setNotes] = useState([]);
     const [selectedNote, setSelectedNote] = useState(null); // To store the selected note for updating
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
         const fetchNotes = async () => {
