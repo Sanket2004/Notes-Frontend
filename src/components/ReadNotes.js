@@ -56,8 +56,8 @@ const ReadNotes = ({ notes, handleDeleteNote, handleOpenUpdateModal }) => {
                   <p className='text-[10px] mt-2'>{new Date(note.date).toLocaleString()}</p>
                 </div>
                 <div className="flex flex-row items-center gap-2 py-2 absolute bottom-0">
-                  <button className='text-sm left-1/2 text-[18px]' onClick={() => handleUpdate(note._id)}><GrFormEdit /></button>
-                  <button className='text-sm left-1/2 text-[18px]' onClick={(e) => { e.stopPropagation(); confirmDelete(note._id); }}><GrFormTrash /></button>
+                  <button className='text-xl left-1/2 text-[18px]' onClick={() => handleUpdate(note._id)}><GrFormEdit /></button>
+                  <button className='text-xl left-1/2 text-[18px]' onClick={(e) => { e.stopPropagation(); confirmDelete(note._id); }}><GrFormTrash /></button>
                 </div>
               </div>
             </li>
